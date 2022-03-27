@@ -13,6 +13,7 @@
 		A2042F3427C011EE00C4EB0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2042F3227C011EE00C4EB0A /* Main.storyboard */; };
 		A2042F3627C011F000C4EB0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2042F3527C011F000C4EB0A /* Assets.xcassets */; };
 		A2042F3927C011F000C4EB0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2042F3727C011F000C4EB0A /* LaunchScreen.storyboard */; };
+		A2639B8327EF18DF00268C7B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2639B8227EF18DF00268C7B /* Person.swift */; };
 		A2EAEDAE27CAA92100301A04 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */; };
 		A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		A2042F3527C011F000C4EB0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2042F3827C011F000C4EB0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2042F3A27C011F000C4EB0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2639B8227EF18DF00268C7B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,15 +62,32 @@
 		A2042F2B27C011EE00C4EB0A /* Architecture-VIPER */ = {
 			isa = PBXGroup;
 			children = (
-				A2042F2C27C011EE00C4EB0A /* AppDelegate.swift */,
-				A2042F2E27C011EE00C4EB0A /* SceneDelegate.swift */,
-				A2EAEDA727CAA85900301A04 /* MainModule */,
-				A2042F3227C011EE00C4EB0A /* Main.storyboard */,
-				A2042F3527C011F000C4EB0A /* Assets.xcassets */,
-				A2042F3727C011F000C4EB0A /* LaunchScreen.storyboard */,
-				A2042F3A27C011F000C4EB0A /* Info.plist */,
+				A2639B8227EF18DF00268C7B /* Person.swift */,
+				A2EAEDA727CAA85900301A04 /* Main */,
+				A222CB0327F0AF07005726EC /* Supporting Files */,
+				A222CB0427F0AF67005726EC /* Storyboard */,
 			);
 			path = "Architecture-VIPER";
+			sourceTree = "<group>";
+		};
+		A222CB0327F0AF07005726EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2042F2C27C011EE00C4EB0A /* AppDelegate.swift */,
+				A2042F2E27C011EE00C4EB0A /* SceneDelegate.swift */,
+				A2042F3527C011F000C4EB0A /* Assets.xcassets */,
+				A2042F3A27C011F000C4EB0A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A222CB0427F0AF67005726EC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A2042F3227C011EE00C4EB0A /* Main.storyboard */,
+				A2042F3727C011F000C4EB0A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		A2EAEDA627CAA85000301A04 /* View */ = {
@@ -79,14 +98,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A2EAEDA727CAA85900301A04 /* MainModule */ = {
+		A2EAEDA727CAA85900301A04 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				A2EAEDA627CAA85000301A04 /* View */,
 				A2EAEDA927CAA8C600301A04 /* Interactor */,
 				A2EAEDAC27CAA90800301A04 /* Presenter */,
 			);
-			path = MainModule;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		A2EAEDA927CAA8C600301A04 /* Interactor */ = {
@@ -180,6 +199,7 @@
 				A2042F3127C011EE00C4EB0A /* MainViewController.swift in Sources */,
 				A2042F2D27C011EE00C4EB0A /* AppDelegate.swift in Sources */,
 				A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */,
+				A2639B8327EF18DF00268C7B /* Person.swift in Sources */,
 				A2042F2F27C011EE00C4EB0A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U3JHK4U826;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Architecture-VIPER/Info.plist";
+				INFOPLIST_FILE = "Architecture-VIPER/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -359,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U3JHK4U826;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Architecture-VIPER/Info.plist";
+				INFOPLIST_FILE = "Architecture-VIPER/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
