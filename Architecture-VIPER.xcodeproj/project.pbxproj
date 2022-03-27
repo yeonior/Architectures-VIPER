@@ -16,7 +16,6 @@
 		A222CB0727F0B351005726EC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB0627F0B351005726EC /* DetailsViewController.swift */; };
 		A222CB0927F0B35B005726EC /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB0827F0B35B005726EC /* DetailsPresenter.swift */; };
 		A222CB0B27F0B362005726EC /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB0A27F0B362005726EC /* DetailsInteractor.swift */; };
-		A2639B8327EF18DF00268C7B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2639B8227EF18DF00268C7B /* Person.swift */; };
 		A2EAEDAE27CAA92100301A04 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */; };
 		A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		A222CB0627F0B351005726EC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A222CB0827F0B35B005726EC /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		A222CB0A27F0B362005726EC /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
-		A2639B8227EF18DF00268C7B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +66,6 @@
 		A2042F2B27C011EE00C4EB0A /* Architecture-VIPER */ = {
 			isa = PBXGroup;
 			children = (
-				A2639B8227EF18DF00268C7B /* Person.swift */,
 				A2EAEDA727CAA85900301A04 /* Main */,
 				A222CB0527F0B336005726EC /* Details */,
 				A222CB0327F0AF07005726EC /* Supporting Files */,
@@ -242,7 +239,6 @@
 				A2042F2D27C011EE00C4EB0A /* AppDelegate.swift in Sources */,
 				A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */,
 				A222CB0727F0B351005726EC /* DetailsViewController.swift in Sources */,
-				A2639B8327EF18DF00268C7B /* Person.swift in Sources */,
 				A2042F2F27C011EE00C4EB0A /* SceneDelegate.swift in Sources */,
 				A222CB0927F0B35B005726EC /* DetailsPresenter.swift in Sources */,
 			);
