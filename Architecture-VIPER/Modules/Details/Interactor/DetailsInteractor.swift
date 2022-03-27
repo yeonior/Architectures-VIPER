@@ -7,7 +7,7 @@
 
 // for interactor
 protocol DetailsInteractorInputProtocol {
-    init(presenter: DetailsInteractorOutputProtocol)
+    init(presenter: DetailsInteractorOutputProtocol, photo: Photo)
     func provideData()
 }
 
@@ -19,9 +19,11 @@ protocol DetailsInteractorOutputProtocol: AnyObject {
 final class DetailsInteractorProtocol: DetailsInteractorInputProtocol {
     
     unowned let presenter: DetailsInteractorOutputProtocol
+    let photo: Photo
     
-    init(presenter: DetailsInteractorOutputProtocol) {
+    init(presenter: DetailsInteractorOutputProtocol, photo: Photo) {
         self.presenter = presenter
+        self.photo = photo
     }
     
     func provideData() {
