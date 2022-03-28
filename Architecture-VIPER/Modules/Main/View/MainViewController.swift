@@ -21,15 +21,14 @@ protocol MainViewOutputProtocol {
 
 final class MainViewController: UIViewController {
     
-    var tableView = UITableView()
     var presenter: MainViewOutputProtocol!
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Photos"
         configureTableView()
-        print("DONE")
     }
     
     // MARK: - Private methods
@@ -68,6 +67,10 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
