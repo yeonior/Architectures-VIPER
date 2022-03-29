@@ -18,15 +18,16 @@ final class MainPresenter: MainViewOutputProtocol {
         self.view = view
     }
     
-    func didSelectCell() {
-        interactor.provideData()
+    func didLaunchView() {
+//        interactor.provideData()
     }
 }
 
 // MARK: - MainInteractorOutputProtocol
 extension MainPresenter: MainInteractorOutputProtocol {
-    func receiveData(data: SomeData) {
+    func receiveData(data: [Photo]?) {
         // preparing data to send to the view
-        view.showInfo()
+//        guard let photos = data else { return }
+//        view.showInfo(from: photos)
     }
 }

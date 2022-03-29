@@ -8,7 +8,7 @@
 final class DetailsPresenter: DetailsViewOutputProtocol {
     
     unowned let view: DetailsViewInputProtocol
-    var interactor: DetailsInteractorOutputProtocol!
+    var interactor: DetailsInteractorInputProtocol!
     
     init(view: DetailsViewInputProtocol) {
         self.view = view

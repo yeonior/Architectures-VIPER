@@ -9,6 +9,7 @@ import UIKit.UIViewController
 
 protocol Builder {
     static func createMainModule() -> UIViewController
+    static func createDetailsModule() -> UIViewController
 }
 
 final class AssemblyBuilder: Builder {    
@@ -17,6 +18,19 @@ final class AssemblyBuilder: Builder {
         let presenter = MainPresenter(view: view)
         let interactor = MainInteractor(presenter: presenter)
         
+        view.presenter = presenter
+        presenter.interactor = interactor
+        
+        return view
+    }
+    
+    static func createDetailsModule() -> UIViewController {
+        let photo = Photo(id: 1, title: "", stringURL: "")
+        let view = DetailsViewController()
+        let presenter = DetailsPresenter(view: view)
+        let interactor = DetailsInteractor(presenter: presenter, photo: photo)
+        
+        view.presenter = presenter
         presenter.interactor = interactor
         
         return view

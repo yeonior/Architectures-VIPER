@@ -19,12 +19,26 @@ protocol DetailsViewOutputProtocol {
 
 final class DetailsViewController: UIViewController {
     
-    // need some views
+    let imageView = UIImageView()
     var presenter: DetailsViewOutputProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+    }
+    
+    private func configureUI() {
+        
+        view.backgroundColor = .systemBackground
+        
+        let image = UIImage(systemName: "nosign")
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        imageView.center = view.center
+        imageView.contentMode = .scaleAspectFit
+        
+        view.addSubview(imageView)
     }
 }
 

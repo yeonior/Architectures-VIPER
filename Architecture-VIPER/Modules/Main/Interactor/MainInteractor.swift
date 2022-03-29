@@ -13,18 +13,28 @@ protocol MainInteractorInputProtocol {
 
 // for presenter
 protocol MainInteractorOutputProtocol: AnyObject {
-    func receiveData(data: SomeData)
+    func receiveData(data: [Photo]?)
 }
 
 final class MainInteractor: MainInteractorInputProtocol {
     
     unowned let presenter: MainInteractorOutputProtocol
+//    var photos: [Photo]?
     
     init(presenter: MainInteractorOutputProtocol) {
         self.presenter = presenter
     }
     
     func provideData() {
-        // fetching data
+//        NetworkManager.shared.getPhotos { [weak self] result in
+//            switch result {
+//            case .success(let photos):
+//                let slice = photos?.prefix(upTo: 10)
+////                self?.photos = Array(slice!)
+//                self?.presenter.receiveData(data: Array(slice!))
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 }

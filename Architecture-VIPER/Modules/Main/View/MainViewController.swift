@@ -10,25 +10,32 @@ import UIKit
 // MARK: - Protocols
 // for view
 protocol MainViewInputProtocol: AnyObject {
-    func showInfo()
+    func showInfo(from data: [Photo])
 }
 
 // for presenter
 protocol MainViewOutputProtocol {
     init(view: MainViewInputProtocol)
-    func didSelectCell()
+    func didLaunchView()
 }
 
 final class MainViewController: UIViewController {
     
     var presenter: MainViewOutputProtocol!
     var tableView = UITableView()
+    var data: [Photo]?
+//    {
+//        didSet {
+//            showInfo(from: data)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Photos"
         configureTableView()
+//        showInfo(from: data)
     }
     
     // MARK: - Private methods
@@ -42,24 +49,34 @@ final class MainViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 // MARK: - MainViewInputProtocol
 extension MainViewController: MainViewInputProtocol {
-    func showInfo() {
-        // putting some text to table cells
+    func showInfo(from data: [Photo]) {
+//        DispatchQueue.main.async {
+//            self.presenter.didLaunchView()
+//            self.data = data
+//            self.tableView.reloadData()
+//        }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        data?.count ?? 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MainTableViewCell
-        cell.idLabel.text = "\(indexPath.row + 1)."
-        cell.titleLabel.text = "gewesdgrerehreshfdsrshrehrsehredrrdrds"
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MainTableViewCell {
+//            let idText = String(describing: data?[indexPath.row].id)
+            cell.idLabel.text = "\(indexPath.row + 1)"
+            cell.titleLabel.text = data?[indexPath.row].title
+            
+            return cell
+        }
+        
+        return UITableViewCell()
     }
 }
 

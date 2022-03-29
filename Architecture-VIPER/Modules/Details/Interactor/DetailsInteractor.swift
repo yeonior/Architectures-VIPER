@@ -16,7 +16,7 @@ protocol DetailsInteractorOutputProtocol: AnyObject {
     func receiveData(data: SomeData)
 }
 
-final class DetailsInteractorProtocol: DetailsInteractorInputProtocol {
+final class DetailsInteractor: DetailsInteractorInputProtocol {
     
     unowned let presenter: DetailsInteractorOutputProtocol
     let photo: Photo
@@ -30,3 +30,4 @@ final class DetailsInteractorProtocol: DetailsInteractorInputProtocol {
         // fetching data
     }
 }
+
