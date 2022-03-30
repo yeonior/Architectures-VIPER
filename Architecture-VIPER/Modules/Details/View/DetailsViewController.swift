@@ -12,12 +12,14 @@ protocol DetailsViewInputProtocol: AnyObject {
     func displayPhotoId(with title: String)
     func displayPhotoTitle(with title: String)
     func displayPhotoImage(with imageData: Data)
+    func displayImageForFavouriteButton(with status: Bool)
 }
 
 // for presenter
 protocol DetailsViewOutputProtocol {
     init(view: DetailsViewInputProtocol)
     func showDetails()
+    func didTouchFavouriteButton()
 }
 
 final class DetailsViewController: UIViewController {
@@ -27,11 +29,6 @@ final class DetailsViewController: UIViewController {
     let photoIdLabel = UILabel()
     let favouriteButton = UIButton()
     var presenter: DetailsViewOutputProtocol!
-    var isFavourite = false {
-        didSet {
-            setImageForFavouriteButton()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +63,9 @@ final class DetailsViewController: UIViewController {
         photoIdLabel.sizeToFit()
         
         // favouriteButton
-        setImageForFavouriteButton()
+//        setImageForFavouriteButton()
         favouriteButton.tintColor = .systemPink
-        favouriteButton.addTarget(self, action: #selector(setFavourite), for: .touchUpInside)
+        favouriteButton.addTarget(self, action: #selector(favoriteButtonTouched), for: .touchUpInside)
         
         // subviews adding
         view.addSubview(photoImageView)
@@ -99,17 +96,8 @@ final class DetailsViewController: UIViewController {
     }
     
     @objc
-    private func setFavourite() {
-        isFavourite.toggle()
-    }
-    
-    private func setImageForFavouriteButton() {
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large)
-        if isFavourite {
-            favouriteButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .normal)
-        } else {
-            favouriteButton.setImage(UIImage(systemName: "heart", withConfiguration: imageConfig), for: .normal)
-        }
+    private func favoriteButtonTouched() {
+        presenter.didTouchFavouriteButton()
     }
 }
 
@@ -125,5 +113,12 @@ extension DetailsViewController: DetailsViewInputProtocol {
     
     func displayPhotoImage(with imageData: Data) {
         photoImageView.image = UIImage(data: imageData)
+    }
+    
+    func displayImageForFavouriteButton(with status: Bool) {
+        var imageName = ""
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large)
+        imageName = status ? "heart.fill" : "heart"
+        favouriteButton.setImage(UIImage(systemName: imageName, withConfiguration: imageConfig), for: .normal)
     }
 }

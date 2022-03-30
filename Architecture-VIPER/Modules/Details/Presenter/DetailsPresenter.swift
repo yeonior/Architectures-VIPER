@@ -11,6 +11,7 @@ struct PhotoDetailsData {
     let id: Int
     let title: String
     let imageData: Data?
+    let isFavorite: Bool
 }
 
 final class DetailsPresenter: DetailsViewOutputProtocol {
@@ -25,6 +26,10 @@ final class DetailsPresenter: DetailsViewOutputProtocol {
     func showDetails() {
         interactor.provideDetails()
     }
+    
+    func didTouchFavouriteButton() {
+        interactor.toggleFavouriteStatus()
+    }
 }
 
 // MARK: - DetailsInteractorOutputProtocol
@@ -34,11 +39,17 @@ extension DetailsPresenter: DetailsInteractorOutputProtocol {
         // preparing the data
         let photoId = "#" + String(data.id)
         let photoTitle = data.title
+        let photoStatus = data.isFavorite
         
         view.displayPhotoId(with: photoId)
         view.displayPhotoTitle(with: photoTitle)
+        view.displayImageForFavouriteButton(with: photoStatus)
         
         guard let photoImageData = data.imageData else { return }
         view.displayPhotoImage(with: photoImageData)
+    }
+    
+    func receiveFavouriteStatus(_ status: Bool) {
+        view.displayImageForFavouriteButton(with: status)
     }
 }
