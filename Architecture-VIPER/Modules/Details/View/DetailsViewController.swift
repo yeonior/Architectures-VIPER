@@ -9,42 +9,65 @@ import UIKit
 
 // for view
 protocol DetailsViewInputProtocol: AnyObject {
-    func someFunc(with: Any)
+    func displayPhotoTitle(with title: String)
 }
 
 // for presenter
 protocol DetailsViewOutputProtocol {
     init(view: DetailsViewInputProtocol)
+    func showDetails()
 }
 
 final class DetailsViewController: UIViewController {
     
-    let imageView = UIImageView()
+    let photoImageView = UIImageView()
+    let photoTextView = UITextView()
     var presenter: DetailsViewOutputProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        presenter.showDetails()
     }
     
     private func configureUI() {
         
+        // view
         view.backgroundColor = .systemBackground
         
+        // photoImageView
         let image = UIImage(systemName: "nosign")
-        imageView.image = image
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView.center = view.center
-        imageView.contentMode = .scaleAspectFit
+        photoImageView.image = image
+        photoImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        photoImageView.center = view.center
+        photoImageView.contentMode = .scaleAspectFit
         
-        view.addSubview(imageView)
+        // photoTextView
+        photoTextView.isEditable = false
+        photoTextView.isScrollEnabled = false
+        photoTextView.isSelectable = false
+        photoTextView.textAlignment = .center
+        photoTextView.font = .systemFont(ofSize: 17)
+        
+        // subviews adding
+        view.addSubview(photoImageView)
+        view.addSubview(photoTextView)
+        
+        // constraints
+        photoTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            photoTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            photoTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            photoTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 20),
+            photoTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+        ])
     }
 }
 
 // MARK: - DetailsViewInputProtocol
 extension DetailsViewController: DetailsViewInputProtocol {
-    func someFunc(with: Any) {
-        // something
+    func displayPhotoTitle(with title: String) {
+        photoTextView.text = title
     }
 }

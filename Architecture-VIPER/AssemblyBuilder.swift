@@ -25,7 +25,9 @@ final class AssemblyBuilder: Builder {
     }
     
     static func createDetailsModule() -> UIViewController {
-        let photo = Photo(id: 1, title: "", stringURL: "")
+        let photo = Photo(id: 1,
+                          title: "wgewshhrekl nkfnawkwf klmj akfa jfklsa kjafka fnlkafklfna ",
+                          stringURL: "")
         let view = DetailsViewController()
         let presenter = DetailsPresenter(view: view)
         let interactor = DetailsInteractor(presenter: presenter, photo: photo)

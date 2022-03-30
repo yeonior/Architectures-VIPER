@@ -8,26 +8,29 @@
 // for interactor
 protocol DetailsInteractorInputProtocol {
     init(presenter: DetailsInteractorOutputProtocol, photo: Photo)
-    func provideData()
+    func provideDetails()
 }
 
 // for presenter
 protocol DetailsInteractorOutputProtocol: AnyObject {
-    func receiveData(data: SomeData)
+    func receivePhotoDetails(with data: PhotoDetailsData)
 }
 
 final class DetailsInteractor: DetailsInteractorInputProtocol {
     
     unowned let presenter: DetailsInteractorOutputProtocol
-    let photo: Photo
+    private let photo: Photo
     
     init(presenter: DetailsInteractorOutputProtocol, photo: Photo) {
         self.presenter = presenter
         self.photo = photo
     }
     
-    func provideData() {
-        // fetching data
+    func provideDetails() {
+        let photoDetailsData = PhotoDetailsData(title: photo.title,
+                                                stringURL: photo.stringURL)
+        presenter.receivePhotoDetails(with: PhotoDetailsData(title: photoDetailsData.title,
+                                                             stringURL: photoDetailsData.stringURL))
     }
 }
 
