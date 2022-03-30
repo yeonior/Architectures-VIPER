@@ -27,9 +27,14 @@ final class DetailsInteractor: DetailsInteractorInputProtocol {
     }
     
     func provideDetails() {
-        let photoDetailsData = PhotoDetailsData(title: photo.title,
+        
+        // preparing the data
+        let photoDetailsData = PhotoDetailsData(id: photo.id,
+                                                title: photo.title,
                                                 stringURL: photo.stringURL)
-        presenter.receivePhotoDetails(with: PhotoDetailsData(title: photoDetailsData.title,
+        
+        presenter.receivePhotoDetails(with: PhotoDetailsData(id: photoDetailsData.id,
+                                                             title: photoDetailsData.title,
                                                              stringURL: photoDetailsData.stringURL))
     }
 }

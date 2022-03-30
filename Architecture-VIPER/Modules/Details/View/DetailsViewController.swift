@@ -10,6 +10,8 @@ import UIKit
 // for view
 protocol DetailsViewInputProtocol: AnyObject {
     func displayPhotoTitle(with title: String)
+    func displayPhotoId(with title: String)
+    func displayPhotoImage(with image: UIImage)
 }
 
 // for presenter
@@ -22,6 +24,7 @@ final class DetailsViewController: UIViewController {
     
     let photoImageView = UIImageView()
     let photoTextView = UITextView()
+    let photoIdLabel = UILabel()
     var presenter: DetailsViewOutputProtocol!
     
     override func viewDidLoad() {
@@ -35,7 +38,7 @@ final class DetailsViewController: UIViewController {
         
         // view
         view.backgroundColor = .systemBackground
-        
+                
         // photoImageView
         let image = UIImage(systemName: "nosign")
         photoImageView.image = image
@@ -50,9 +53,15 @@ final class DetailsViewController: UIViewController {
         photoTextView.textAlignment = .center
         photoTextView.font = .systemFont(ofSize: 17)
         
+        // photoIdLabel
+        photoIdLabel.font = .systemFont(ofSize: 30)
+        photoIdLabel.textAlignment = .center
+        photoIdLabel.sizeToFit()
+        
         // subviews adding
         view.addSubview(photoImageView)
         view.addSubview(photoTextView)
+        view.addSubview(photoIdLabel)
         
         // constraints
         photoTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,12 +71,26 @@ final class DetailsViewController: UIViewController {
             photoTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 20),
             photoTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         ])
+        
+        photoIdLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            photoIdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            photoIdLabel.bottomAnchor.constraint(equalTo: photoImageView.topAnchor, constant: -20)
+        ])
     }
 }
 
 // MARK: - DetailsViewInputProtocol
 extension DetailsViewController: DetailsViewInputProtocol {
+    func displayPhotoImage(with image: UIImage) {
+        // ...
+    }
+    
     func displayPhotoTitle(with title: String) {
         photoTextView.text = title
+    }
+    
+    func displayPhotoId(with title: String) {
+        photoIdLabel.text = title
     }
 }

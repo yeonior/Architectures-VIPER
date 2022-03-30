@@ -6,6 +6,7 @@
 //
 
 struct PhotoDetailsData {
+    let id: Int
     let title: String
     let stringURL: String
 }
@@ -27,6 +28,12 @@ final class DetailsPresenter: DetailsViewOutputProtocol {
 // MARK: - DetailsInteractorOutputProtocol
 extension DetailsPresenter: DetailsInteractorOutputProtocol {
     func receivePhotoDetails(with data: PhotoDetailsData) {
-        view.displayPhotoTitle(with: data.title)
+        
+        // preparing the data
+        let photoId = "#" + String(data.id)
+        let photoTitle = data.title
+        
+        view.displayPhotoId(with: photoId)
+        view.displayPhotoTitle(with: photoTitle)
     }
 }
