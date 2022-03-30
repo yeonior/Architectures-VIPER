@@ -9,9 +9,9 @@ import UIKit
 
 // for view
 protocol DetailsViewInputProtocol: AnyObject {
-    func displayPhotoTitle(with title: String)
     func displayPhotoId(with title: String)
-    func displayPhotoImage(with image: UIImage)
+    func displayPhotoTitle(with title: String)
+    func displayPhotoImage(with imageData: Data)
 }
 
 // for presenter
@@ -42,7 +42,7 @@ final class DetailsViewController: UIViewController {
         // photoImageView
         let image = UIImage(systemName: "nosign")
         photoImageView.image = image
-        photoImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        photoImageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         photoImageView.center = view.center
         photoImageView.contentMode = .scaleAspectFit
         
@@ -82,15 +82,15 @@ final class DetailsViewController: UIViewController {
 
 // MARK: - DetailsViewInputProtocol
 extension DetailsViewController: DetailsViewInputProtocol {
-    func displayPhotoImage(with image: UIImage) {
-        // ...
+    func displayPhotoId(with title: String) {
+        photoIdLabel.text = title
     }
     
     func displayPhotoTitle(with title: String) {
         photoTextView.text = title
     }
     
-    func displayPhotoId(with title: String) {
-        photoIdLabel.text = title
+    func displayPhotoImage(with imageData: Data) {
+        photoImageView.image = UIImage(data: imageData)
     }
 }

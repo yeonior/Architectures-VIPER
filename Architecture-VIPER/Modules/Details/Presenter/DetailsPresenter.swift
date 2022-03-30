@@ -5,10 +5,12 @@
 //  Created by Ruslan on 27.03.2022.
 //
 
+import Foundation
+
 struct PhotoDetailsData {
     let id: Int
     let title: String
-    let stringURL: String
+    let imageData: Data?
 }
 
 final class DetailsPresenter: DetailsViewOutputProtocol {
@@ -35,5 +37,8 @@ extension DetailsPresenter: DetailsInteractorOutputProtocol {
         
         view.displayPhotoId(with: photoId)
         view.displayPhotoTitle(with: photoTitle)
+        
+        guard let photoImageData = data.imageData else { return }
+        view.displayPhotoImage(with: photoImageData)
     }
 }

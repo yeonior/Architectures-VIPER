@@ -5,6 +5,8 @@
 //  Created by Ruslan on 27.03.2022.
 //
 
+import Foundation
+
 // for interactor
 protocol DetailsInteractorInputProtocol {
     init(presenter: DetailsInteractorOutputProtocol, photo: Photo)
@@ -29,13 +31,14 @@ final class DetailsInteractor: DetailsInteractorInputProtocol {
     func provideDetails() {
         
         // preparing the data
+        let imageData = NetworkManager.shared.getData(from: photo.stringURL)
         let photoDetailsData = PhotoDetailsData(id: photo.id,
                                                 title: photo.title,
-                                                stringURL: photo.stringURL)
+                                                imageData: imageData)
         
         presenter.receivePhotoDetails(with: PhotoDetailsData(id: photoDetailsData.id,
                                                              title: photoDetailsData.title,
-                                                             stringURL: photoDetailsData.stringURL))
+                                                             imageData: photoDetailsData.imageData))
     }
 }
 
