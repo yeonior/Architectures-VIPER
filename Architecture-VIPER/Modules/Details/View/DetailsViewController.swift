@@ -25,7 +25,13 @@ final class DetailsViewController: UIViewController {
     let photoImageView = UIImageView()
     let photoTextView = UITextView()
     let photoIdLabel = UILabel()
+    let favouriteButton = UIButton()
     var presenter: DetailsViewOutputProtocol!
+    var isFavourite = false {
+        didSet {
+            setImageForFavouriteButton()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,7 @@ final class DetailsViewController: UIViewController {
         presenter.showDetails()
     }
     
+    // MARK: - Private methods
     private func configureUI() {
         
         // view
@@ -58,10 +65,16 @@ final class DetailsViewController: UIViewController {
         photoIdLabel.textAlignment = .center
         photoIdLabel.sizeToFit()
         
+        // favouriteButton
+        setImageForFavouriteButton()
+        favouriteButton.tintColor = .systemPink
+        favouriteButton.addTarget(self, action: #selector(setFavourite), for: .touchUpInside)
+        
         // subviews adding
         view.addSubview(photoImageView)
         view.addSubview(photoTextView)
         view.addSubview(photoIdLabel)
+        view.addSubview(favouriteButton)
         
         // constraints
         photoTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +90,26 @@ final class DetailsViewController: UIViewController {
             photoIdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             photoIdLabel.bottomAnchor.constraint(equalTo: photoImageView.topAnchor, constant: -20)
         ])
+        
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            favouriteButton.topAnchor.constraint(equalTo: photoImageView.topAnchor, constant: 5),
+            favouriteButton.trailingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: -5)
+        ])
+    }
+    
+    @objc
+    private func setFavourite() {
+        isFavourite.toggle()
+    }
+    
+    private func setImageForFavouriteButton() {
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large)
+        if isFavourite {
+            favouriteButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .normal)
+        } else {
+            favouriteButton.setImage(UIImage(systemName: "heart", withConfiguration: imageConfig), for: .normal)
+        }
     }
 }
 
