@@ -19,6 +19,7 @@
 		A222CB1027F0CBCC005726EC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB0F27F0CBCC005726EC /* Photo.swift */; };
 		A222CB1527F0CD3F005726EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB1427F0CD3F005726EC /* NetworkManager.swift */; };
 		A222CB1927F0D233005726EC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB1827F0D233005726EC /* MainTableViewCell.swift */; };
+		A27F1FD327F4EB6D00953507 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27F1FD227F4EB6D00953507 /* DataManager.swift */; };
 		A298481427F1918F00E01230 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298481327F1918F00E01230 /* AssemblyBuilder.swift */; };
 		A2EAEDAE27CAA92100301A04 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */; };
 		A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */; };
@@ -39,6 +40,7 @@
 		A222CB0F27F0CBCC005726EC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A222CB1427F0CD3F005726EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A222CB1827F0D233005726EC /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		A27F1FD227F4EB6D00953507 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A298481327F1918F00E01230 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A2EAEDAF27CAA93500301A04 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A222CB1427F0CD3F005726EC /* NetworkManager.swift */,
+				A27F1FD227F4EB6D00953507 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				A2EAEDB027CAA93500301A04 /* MainInteractor.swift in Sources */,
 				A222CB0727F0B351005726EC /* DetailsViewController.swift in Sources */,
 				A2042F2F27C011EE00C4EB0A /* SceneDelegate.swift in Sources */,
+				A27F1FD327F4EB6D00953507 /* DataManager.swift in Sources */,
 				A222CB0927F0B35B005726EC /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
