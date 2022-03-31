@@ -18,16 +18,15 @@ final class MainPresenter: MainViewOutputProtocol {
         self.view = view
     }
     
-    func didLaunchView() {
-//        interactor.provideData()
+    func viewDidLoad() {
+        interactor.provideData()
     }
 }
 
 // MARK: - MainInteractorOutputProtocol
 extension MainPresenter: MainInteractorOutputProtocol {
-    func receiveData(data: [Photo]?) {
-        // preparing data to send to the view
-//        guard let photos = data else { return }
-//        view.showInfo(from: photos)
+    func receiveData(data: [PhotoData]?) {
+        // preparing data
+        // ...
     }
 }

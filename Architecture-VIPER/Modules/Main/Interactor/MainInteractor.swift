@@ -13,7 +13,7 @@ protocol MainInteractorInputProtocol {
 
 // for presenter
 protocol MainInteractorOutputProtocol: AnyObject {
-    func receiveData(data: [Photo]?)
+    func receiveData(data: [PhotoData]?)
 }
 
 final class MainInteractor: MainInteractorInputProtocol {
