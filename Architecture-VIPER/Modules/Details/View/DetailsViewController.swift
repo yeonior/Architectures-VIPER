@@ -19,7 +19,7 @@ protocol DetailsViewInputProtocol: AnyObject {
 protocol DetailsViewOutputProtocol {
     init(view: DetailsViewInputProtocol)
     func showDetails()
-    func didTouchFavouriteButton()
+    func favouriteButtonDidTouch()
 }
 
 final class DetailsViewController: UIViewController {
@@ -63,7 +63,6 @@ final class DetailsViewController: UIViewController {
         photoIdLabel.sizeToFit()
         
         // favouriteButton
-//        setImageForFavouriteButton()
         favouriteButton.tintColor = .systemPink
         favouriteButton.addTarget(self, action: #selector(favoriteButtonTouched), for: .touchUpInside)
         
@@ -97,7 +96,7 @@ final class DetailsViewController: UIViewController {
     
     @objc
     private func favoriteButtonTouched() {
-        presenter.didTouchFavouriteButton()
+        presenter.favouriteButtonDidTouch()
     }
 }
 

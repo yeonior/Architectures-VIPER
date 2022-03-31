@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol NetworkServiceProtocol {
+protocol NetworkManagerProtocol {
     func getPhotos(completion: @escaping (Result<[Photo]?, Error>) -> Void)
     func getData(from stringURL: String) -> Data
 }
 
-final class NetworkManager: NetworkServiceProtocol {
+final class NetworkManager: NetworkManagerProtocol {
     static var shared = NetworkManager()
     private let sessionConfiguration = URLSessionConfiguration.default
     private let session = URLSession.shared

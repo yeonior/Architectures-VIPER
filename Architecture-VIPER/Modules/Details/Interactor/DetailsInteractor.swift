@@ -47,10 +47,7 @@ final class DetailsInteractor: DetailsInteractorInputProtocol {
                                                 imageData: imageData,
                                                 isFavorite: isFavourite)
         
-        presenter.receivePhotoDetails(with: PhotoDetailsData(id: photoDetailsData.id,
-                                                             title: photoDetailsData.title,
-                                                             imageData: photoDetailsData.imageData,
-                                                             isFavorite: photoDetailsData.isFavorite))
+        presenter.receivePhotoDetails(with: photoDetailsData)
     }
     
     func toggleFavouriteStatus() {

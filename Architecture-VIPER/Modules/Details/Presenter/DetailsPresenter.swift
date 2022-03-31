@@ -27,7 +27,7 @@ final class DetailsPresenter: DetailsViewOutputProtocol {
         interactor.provideDetails()
     }
     
-    func didTouchFavouriteButton() {
+    func favouriteButtonDidTouch() {
         interactor.toggleFavouriteStatus()
     }
 }
