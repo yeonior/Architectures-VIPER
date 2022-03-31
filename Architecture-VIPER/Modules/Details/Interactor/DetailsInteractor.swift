@@ -25,14 +25,13 @@ final class DetailsInteractor: DetailsInteractorInputProtocol {
     
     unowned let presenter: DetailsInteractorOutputProtocol
     private let photo: Photo
-    var isFavourite: Bool = false
-//    {
-//        get {
-//
-//        } set {
-//
-//        }
-//    }
+    var isFavourite: Bool {
+        get {
+            DataManager.shared.getFavouriteStatus(for: photo.title)
+        } set {
+            DataManager.shared.setFavouriteStatus(for: photo.title, with: newValue)
+        }
+    }
     
     init(presenter: DetailsInteractorOutputProtocol, photo: Photo) {
         self.presenter = presenter
