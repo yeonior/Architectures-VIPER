@@ -19,6 +19,8 @@
 		A222CB1027F0CBCC005726EC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB0F27F0CBCC005726EC /* Photo.swift */; };
 		A222CB1527F0CD3F005726EC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB1427F0CD3F005726EC /* NetworkManager.swift */; };
 		A222CB1927F0D233005726EC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222CB1827F0D233005726EC /* MainTableViewCell.swift */; };
+		A277014327F5D90C0061C15E /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A277014227F5D90C0061C15E /* MainCellViewModel.swift */; };
+		A277014527F60F360061C15E /* MainSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A277014427F60F360061C15E /* MainSectionViewModel.swift */; };
 		A27F1FD327F4EB6D00953507 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27F1FD227F4EB6D00953507 /* DataManager.swift */; };
 		A298481427F1918F00E01230 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298481327F1918F00E01230 /* AssemblyBuilder.swift */; };
 		A2EAEDAE27CAA92100301A04 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */; };
@@ -40,6 +42,8 @@
 		A222CB0F27F0CBCC005726EC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		A222CB1427F0CD3F005726EC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A222CB1827F0D233005726EC /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		A277014227F5D90C0061C15E /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
+		A277014427F60F360061C15E /* MainSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionViewModel.swift; sourceTree = "<group>"; };
 		A27F1FD227F4EB6D00953507 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A298481327F1918F00E01230 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		A2EAEDAD27CAA92100301A04 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -166,11 +170,37 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		A277014127F5D8E10061C15E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A277014627F60F620061C15E /* View */,
+				A277014727F60F690061C15E /* ViewModels */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A277014627F60F620061C15E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A222CB1827F0D233005726EC /* MainTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A277014727F60F690061C15E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A277014427F60F360061C15E /* MainSectionViewModel.swift */,
+				A277014227F5D90C0061C15E /* MainCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		A2EAEDA627CAA85000301A04 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A2042F3027C011EE00C4EB0A /* MainViewController.swift */,
-				A222CB1827F0D233005726EC /* MainTableViewCell.swift */,
+				A277014127F5D8E10061C15E /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,9 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A277014527F60F360061C15E /* MainSectionViewModel.swift in Sources */,
 				A222CB1927F0D233005726EC /* MainTableViewCell.swift in Sources */,
 				A2EAEDAE27CAA92100301A04 /* MainPresenter.swift in Sources */,
 				A222CB0B27F0B362005726EC /* DetailsInteractor.swift in Sources */,
+				A277014327F5D90C0061C15E /* MainCellViewModel.swift in Sources */,
 				A298481427F1918F00E01230 /* AssemblyBuilder.swift in Sources */,
 				A222CB1527F0CD3F005726EC /* NetworkManager.swift in Sources */,
 				A2042F3127C011EE00C4EB0A /* MainViewController.swift in Sources */,

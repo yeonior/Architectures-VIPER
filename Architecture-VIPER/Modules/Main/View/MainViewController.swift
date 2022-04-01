@@ -9,7 +9,7 @@ import UIKit
 
 // for view
 protocol MainViewInputProtocol: AnyObject {
-    func displayCellIdTitle(with title: String)
+    func reloadData(for section: MainSectionViewModel)
 }
 
 // for presenter
@@ -22,6 +22,7 @@ final class MainViewController: UIViewController {
     
     private var tableView = UITableView()
     var presenter: MainViewOutputProtocol!
+    var section: SectionRowPresentable = MainSectionViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,22 +50,25 @@ final class MainViewController: UIViewController {
 
 // MARK: - MainViewInputProtocol
 extension MainViewController: MainViewInputProtocol {
-    func displayCellIdTitle(with title: String) {
-        
+    func reloadData(for section: MainSectionViewModel) {
+        self.section = section
+        tableView.reloadData()
     }
 }
 
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        self.section.rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MainTableViewCell {
-//            let idText = String(describing: data?[indexPath.row].id)
-            cell.idLabel.text = "\(indexPath.row + 1)."
-            cell.titleLabel.text = "accusamus beatae ad facilis cum similique qui sunt"
+        
+        let viewModel = section.rows[indexPath.row]
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath) as? MainTableViewCell {
+            
+            cell.viewModel = viewModel
             
             return cell
         }
@@ -76,7 +80,7 @@ extension MainViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        CGFloat(section.rows[indexPath.row].cellHeight)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

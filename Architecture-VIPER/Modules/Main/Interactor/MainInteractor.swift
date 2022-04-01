@@ -8,12 +8,12 @@
 // for interactor
 protocol MainInteractorInputProtocol {
     init(presenter: MainInteractorOutputProtocol)
-    func provideData()
+    func fetchPhotos()
 }
 
 // for presenter
 protocol MainInteractorOutputProtocol: AnyObject {
-    func receiveData(data: [PhotoData]?)
+    func photosDidReceived(_ photos: [Photo])
 }
 
 final class MainInteractor: MainInteractorInputProtocol {
@@ -25,16 +25,15 @@ final class MainInteractor: MainInteractorInputProtocol {
         self.presenter = presenter
     }
     
-    func provideData() {
-//        NetworkManager.shared.getPhotos { [weak self] result in
-//            switch result {
-//            case .success(let photos):
-//                let slice = photos?.prefix(upTo: 10)
-////                self?.photos = Array(slice!)
-//                self?.presenter.receiveData(data: Array(slice!))
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
+    func fetchPhotos() {
+        NetworkManager.shared.getPhotos { [weak self] result in
+            switch result {
+            case .success(let photos):
+                let slice = photos?.prefix(upTo: 10)
+                self?.presenter.photosDidReceived(Array(slice!))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

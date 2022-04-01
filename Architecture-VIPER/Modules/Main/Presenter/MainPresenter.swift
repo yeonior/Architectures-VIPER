@@ -19,14 +19,19 @@ final class MainPresenter: MainViewOutputProtocol {
     }
     
     func viewDidLoad() {
-        interactor.provideData()
+        interactor.fetchPhotos()
     }
 }
 
 // MARK: - MainInteractorOutputProtocol
 extension MainPresenter: MainInteractorOutputProtocol {
-    func receiveData(data: [PhotoData]?) {
+    func photosDidReceived(_ photos: [Photo]) {
         // preparing data
-        // ...
+        let section = MainSectionViewModel()
+        photos.forEach { photo in
+            let newElemenet = MainCellViewModel(photo: photo)
+            section.rows.append(newElemenet)
+        }
+        view.reloadData(for: section)
     }
 }

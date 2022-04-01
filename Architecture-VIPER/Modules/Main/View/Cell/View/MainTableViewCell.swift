@@ -7,9 +7,19 @@
 
 import UIKit
 
-final class MainTableViewCell: UITableViewCell {
+protocol CellModelRepresentable {
+    var viewModel: CellIdentifiable? { get set }
+}
+
+final class MainTableViewCell: UITableViewCell, CellModelRepresentable {
     
     // MARK: - Properties
+    var viewModel: CellIdentifiable? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     let idLabel: UILabel = {
         $0.font = .systemFont(ofSize: 17)
         $0.textAlignment = .center
@@ -40,7 +50,7 @@ final class MainTableViewCell: UITableViewCell {
     // MARK: - Private methods
     private func configureCell() {
         
-        // adding subviews
+        // subviews adding
         contentView.addSubview(idLabel)
         contentView.addSubview(titleLabel)
         
@@ -60,5 +70,11 @@ final class MainTableViewCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
+    }
+    
+    private func updateViews() {
+        guard let cellViewModel = viewModel as? MainCellViewModel else { return }
+        idLabel.text = String(cellViewModel.id)
+        titleLabel.text = cellViewModel.title
     }
 }
