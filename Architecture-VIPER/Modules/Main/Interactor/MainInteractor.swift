@@ -16,7 +16,7 @@ protocol MainInteractorInputProtocol {
 
 // for presenter
 protocol MainInteractorOutputProtocol: AnyObject {
-    func photosDidReceived(_ photos: [Photo])
+    func photosDidReceived(_ photosData: [PhotoData])
     func photoDidReceive(_ photo: Photo)
 }
 
@@ -33,7 +33,15 @@ final class MainInteractor: MainInteractorInputProtocol {
             switch result {
             case .success(let photos):
                 let slice = photos?.prefix(upTo: 10)
-                self?.presenter.photosDidReceived(Array(slice!))
+                
+                // that's optinal solution!
+                // it can be [Photo] with Array(slice)!
+                var photoDataArray: [PhotoData] = []
+                slice?.forEach({ photo in
+                    let photoData = PhotoData(id: photo.id, title: photo.title)
+                    photoDataArray.append(photoData)
+                })
+                self?.presenter.photosDidReceived(photoDataArray)
             case .failure(let error):
                 print(error.localizedDescription)
             }

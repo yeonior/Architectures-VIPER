@@ -22,8 +22,8 @@ final class MainCellViewModel: CellIdentifiable {
         50
     }
     
-    init(photo: Photo) {
-        id = photo.id
-        title = photo.title
+    init(photoData: PhotoData) {
+        id = photoData.id
+        title = photoData.title
     }
 }

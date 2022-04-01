@@ -8,7 +8,8 @@
 import Foundation
 
 struct PhotoData {
-    // ...
+    let id: Int
+    let title: String
 }
 
 final class MainPresenter: MainViewOutputProtocol {
@@ -32,13 +33,15 @@ final class MainPresenter: MainViewOutputProtocol {
 
 // MARK: - MainInteractorOutputProtocol
 extension MainPresenter: MainInteractorOutputProtocol {
-    func photosDidReceived(_ photos: [Photo]) {
+    func photosDidReceived(_ photosData: [PhotoData]) {
+        
         // preparing data
         let section = MainSectionViewModel()
-        photos.forEach { photo in
-            let newElemenet = MainCellViewModel(photo: photo)
+        photosData.forEach { photoData in
+            let newElemenet = MainCellViewModel(photoData: photoData)
             section.rows.append(newElemenet)
         }
+        
         view.reloadData(for: section)
     }
     
