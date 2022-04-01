@@ -7,7 +7,7 @@
 
 protocol MainRouterInputProtocol {
     init(viewController: MainViewController)
-    func openDetailsViewController(with: Photo)
+    func openDetailsViewController(with photo: Photo)
 }
 
 final class MainRouter: MainRouterInputProtocol {
@@ -18,7 +18,8 @@ final class MainRouter: MainRouterInputProtocol {
         self.viewController = viewController
     }
     
-    func openDetailsViewController(with: Photo) {
-        
+    func openDetailsViewController(with photo: Photo) {
+        let detailsViewController = AssemblyBuilder.createDetailsModule(with: photo)
+        viewController.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

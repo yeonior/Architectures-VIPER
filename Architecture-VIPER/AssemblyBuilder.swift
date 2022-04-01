@@ -9,7 +9,7 @@ import UIKit.UIViewController
 
 protocol Builder {
     static func createMainModule() -> UIViewController
-    static func createDetailsModule() -> UIViewController
+    static func createDetailsModule(with photo: Photo) -> UIViewController
 }
 
 final class AssemblyBuilder: Builder {    
@@ -17,17 +17,16 @@ final class AssemblyBuilder: Builder {
         let view = MainViewController()
         let presenter = MainPresenter(view: view)
         let interactor = MainInteractor(presenter: presenter)
+        let router = MainRouter(viewController: view)
         
         view.presenter = presenter
         presenter.interactor = interactor
+        presenter.router = router
         
         return view
     }
     
-    static func createDetailsModule() -> UIViewController {
-        let photo = Photo(id: 1,
-                          title: "accusamus beatae ad facilis cum similique qui sunt",
-                          stringURL: "https://via.placeholder.com/600/92c952")
+    static func createDetailsModule(with photo: Photo) -> UIViewController {
         let view = DetailsViewController()
         let presenter = DetailsPresenter(view: view)
         let interactor = DetailsInteractor(presenter: presenter, photo: photo)

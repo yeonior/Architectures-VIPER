@@ -13,10 +13,14 @@ protocol NetworkManagerProtocol {
 }
 
 final class NetworkManager: NetworkManagerProtocol {
+    
     static var shared = NetworkManager()
+    
     private let sessionConfiguration = URLSessionConfiguration.default
     private let session = URLSession.shared
     private let stringURL = "https://jsonplaceholder.typicode.com/photos"
+    
+    private init() {}
     
     func getPhotos(completion: @escaping (Result<[Photo]?, Error>) -> Void) {
         guard let url = URL(string: stringURL) else { return }
@@ -25,6 +29,7 @@ final class NetworkManager: NetworkManagerProtocol {
             if let data = data, error == nil {
                 do {
                     let photos = try JSONDecoder().decode([Photo].self, from: data)
+                    DataManager.shared.setPhotos(photos)
                     DispatchQueue.main.async {
                         completion(.success(photos))
                     }

@@ -5,21 +5,24 @@
 //  Created by Ruslan on 26.02.2022.
 //
 
+import Foundation
+
 // for interactor
 protocol MainInteractorInputProtocol {
     init(presenter: MainInteractorOutputProtocol)
     func fetchPhotos()
+    func providePhoto(at indexPath: IndexPath)
 }
 
 // for presenter
 protocol MainInteractorOutputProtocol: AnyObject {
     func photosDidReceived(_ photos: [Photo])
+    func photoDidReceive(_ photo: Photo)
 }
 
 final class MainInteractor: MainInteractorInputProtocol {
     
     unowned let presenter: MainInteractorOutputProtocol
-//    var photos: [Photo]?
     
     init(presenter: MainInteractorOutputProtocol) {
         self.presenter = presenter
@@ -35,5 +38,10 @@ final class MainInteractor: MainInteractorInputProtocol {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func providePhoto(at indexPath: IndexPath) {
+        let photo = DataManager.shared.getPhoto(at: indexPath)
+        presenter.photoDidReceive(photo)
     }
 }

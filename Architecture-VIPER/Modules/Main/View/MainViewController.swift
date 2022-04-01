@@ -16,6 +16,7 @@ protocol MainViewInputProtocol: AnyObject {
 protocol MainViewOutputProtocol {
     init(view: MainViewInputProtocol)
     func viewDidLoad()
+    func cellDidSelected(at indexPath: IndexPath)
 }
 
 final class MainViewController: UIViewController {
@@ -85,6 +86,7 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        presenter.cellDidSelected(at: indexPath)
     }
 }
 

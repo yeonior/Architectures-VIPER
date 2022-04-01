@@ -5,6 +5,8 @@
 //  Created by Ruslan on 26.02.2022.
 //
 
+import Foundation
+
 struct PhotoData {
     // ...
 }
@@ -13,6 +15,7 @@ final class MainPresenter: MainViewOutputProtocol {
     
     unowned let view: MainViewInputProtocol
     var interactor: MainInteractorInputProtocol!
+    var router: MainRouterInputProtocol!
     
     init(view: MainViewInputProtocol) {
         self.view = view
@@ -20,6 +23,10 @@ final class MainPresenter: MainViewOutputProtocol {
     
     func viewDidLoad() {
         interactor.fetchPhotos()
+    }
+    
+    func cellDidSelected(at indexPath: IndexPath) {
+        interactor.providePhoto(at: indexPath)
     }
 }
 
@@ -33,5 +40,9 @@ extension MainPresenter: MainInteractorOutputProtocol {
             section.rows.append(newElemenet)
         }
         view.reloadData(for: section)
+    }
+    
+    func photoDidReceive(_ photo: Photo) {
+        router.openDetailsViewController(with: photo)
     }
 }
